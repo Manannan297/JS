@@ -58,6 +58,7 @@
     let width = 800;
     let height = 800;
     let clicks = 0;
+    let clicksLimit = 30;
 
     // Случайная позиция клада
     let target = {
@@ -68,6 +69,11 @@
     // Добавляем элементу img обработчик клика
     $("#map").click(function (event) {
         clicks++;
+
+        if (clicks > clicksLimit) {
+            alert("GAME OVER");
+            return;
+        }
 
         // Получаем расстояние от места клика до клада
         let distance = getDistance(event, target);
